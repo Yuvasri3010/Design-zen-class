@@ -1,0 +1,137 @@
+TABLE CREATING
+
+
+
+********create course table
+```sql
+
+	CREATE TABLE Course (
+    	CourseID INT PRIMARY KEY,
+    	CourseName VARCHAR(255),
+    	Description TEXT,
+    	Duration INT
+);
+```
+
+********create Mentor table
+```sql
+
+
+
+CREATE TABLE Mentor (
+   MentorID INT PRIMARY KEY,
+    FirstName VARCHAR(20),
+    LastName VARCHAR(10),
+    Email VARCHAR(30),
+    Phone VARCHAR(10)
+);
+
+
+create Student  table
+
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    FirstName VARCHAR(20),
+    LastName VARCHAR(10),
+    Email VARCHAR(30),
+    Phone VARCHAR(10)
+);
+
+
+create Class  table
+
+CREATE TABLE Class (
+    ClassID INT PRIMARY KEY,
+    CourseID INT,
+    MentorID INT,
+    Class Days VARCHAR(100),
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID),
+    FOREIGN KEY (MentorID) REFERENCES Mentor(MentorID)
+);
+
+
+create Enrollment  table
+
+CREATE TABLE Enrollment (
+    EnrollmentID INT PRIMARY KEY,
+    StudentID INT,
+    ClassID INT,
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    FOREIGN KEY (ClassID) REFERENCES Class(ClassID)
+);
+
+
+USING LEFT JOIN FOR   Student Tables and Enrollment Tables
+
+SELECT * FROM Student LEFT JOIN Enrollment ON Student.StudentID = Enrollment.StudentID;
+
+
+fetch  all records and fields  in course table 
+
+SELECT * FROM Course;
+
+
+fetch all records and fields  in instructors table
+
+SELECT * FROM Instructor;
+
+fetch all records and fields  in students table
+
+
+SELECT * FROM Student;
+
+fetch all records and fields  in class table
+
+SELECT * FROM Class;
+
+
+UPDATE
+
+Update course records
+
+UPDATE Course
+SET CourseName = 'Divys', Description = 'Full Stack', Duration = 6 month
+WHERE CourseID = 1;
+
+
+Update Mentor records
+
+UPDATE Mentor
+SET FirstName = 'POONA MANI', LastName = 'SAARA PAAMBU', Email = 'PANNIPANDARAM@THUG.COM', Phone = '9999999999'
+WHERE MentorID = 1;
+
+Update student records:
+
+UPDATE Student
+SET FirstName = 'Priya', LastName = 'Shankar', Email ="priya@email.com", Phone = '9999999999'
+WHERE StudentID = 1;
+```
+
+Update class records:
+
+UPDATE Class
+SET Class Days = 'Additional'
+WHERE ClassID = 1;
+```
+
+DELETE
+
+
+Delete a course:
+
+DELETE FROM Course WHERE CourseID = 1;
+
+
+Delete an Coordinator: 
+
+DELETE FROM Coordinator WHERE CoordinatorID = 1;
+
+
+Delete a student:
+
+DELETE FROM Student WHERE StudentID = 1;
+
+
+Delete a class:
+
+DELETE FROM Class WHERE ClassID = 1;
